@@ -120,7 +120,7 @@ int main(void) {
 		LARGE_INTEGER position_again = { limiting_value * 512 };
 		get_file_pointer = SetFilePointerEx(AccessDisk, position_again, NULL, FILE_BEGIN);
 		BOOL write_to_disk = WriteFile(AccessDisk, zero_buffer, 512, NULL, NULL);
-		printf("Writing to sector %I64u\t %lf percent done \t %I64u bytes left", position_again,(double) ((position_again.QuadPart + position_again.LowPart) / (selected_drive_size / 512 / 100)), selected_drive_size - (position_again.QuadPart + position_again.LowPart));
+		printf("Writing to sector %I64u\t %lf percent done \t %I64u bytes left", position_again,(double) ((position_again.QuadPart + position_again.LowPart) / (selected_drive_size * 100 / 512)), selected_drive_size - (position_again.QuadPart + position_again.LowPart));
 
 /*
 		if(position_again < 0xFFFFFFFF) {
